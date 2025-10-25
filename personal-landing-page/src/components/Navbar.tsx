@@ -23,6 +23,7 @@ const typingMessages = [
 
 export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home-container');
   const [typingText, setTypingText] = useState('');
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -111,6 +112,30 @@ export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarPr
     };
   }, [isMenuOpen]);
 
+  // Update active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home-container', 'about-container', 'projects-container', 'contact-container'];
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <nav id="navbar" className="navbar">
@@ -134,7 +159,7 @@ export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarPr
         <div id="navLinks" className={`nav-links ${isMenuOpen ? 'nav-active' : ''}`}>
           <a
             href="#home-container"
-            className="active"
+            className={activeSection === 'home-container' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('home-container');
@@ -144,6 +169,7 @@ export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarPr
           </a>
           <a
             href="#about-container"
+            className={activeSection === 'about-container' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('about-container');
@@ -153,6 +179,7 @@ export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarPr
           </a>
           <a
             href="#projects-container"
+            className={activeSection === 'projects-container' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('projects-container');
@@ -162,6 +189,7 @@ export default function Navbar({ theme, toggleTheme, scrollToSection }: NavbarPr
           </a>
           <a
             href="#contact-container"
+            className={activeSection === 'contact-container' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('contact-container');

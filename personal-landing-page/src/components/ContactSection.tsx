@@ -146,7 +146,7 @@ export default function ContactSection() {
               <a
                 href="https://github.com/MarkSilla"
                 target="_blank"
-                className="social-link"
+                className="social-link white-icon"
                 title="GitHub"
                 rel="noopener noreferrer"
               >
@@ -155,7 +155,7 @@ export default function ContactSection() {
               <a
                 href="https://www.linkedin.com/in/mark-emel-silla-bb6850334"
                 target="_blank"
-                className="social-link"
+                className="social-link colored-icon"
                 title="LinkedIn"
                 rel="noopener noreferrer"
               >
@@ -164,7 +164,7 @@ export default function ContactSection() {
               <a
                 href="https://x.com/EmelSilla62695"
                 target="_blank"
-                className="social-link"
+                className="social-link white-icon"
                 title="Twitter"
                 rel="noopener noreferrer"
               >
@@ -173,7 +173,7 @@ export default function ContactSection() {
               <a
                 href="https://www.facebook.com/markemel.silla.3"
                 target="_blank"
-                className="social-link"
+                className="social-link colored-icon"
                 title="Facebook"
                 rel="noopener noreferrer"
               >
@@ -182,7 +182,7 @@ export default function ContactSection() {
               <a
                 href="https://www.instagram.com/mrksilya"
                 target="_blank"
-                className="social-link"
+                className="social-link colored-icon"
                 title="Instagram"
                 rel="noopener noreferrer"
               >
