@@ -74,16 +74,4 @@ function initializeGreetings() {
     }, 100); 
 }
 
-// Call this function after you load your home content
-// For example, if you have a function that loads the home section:
-// loadHomeContent().then(() => {
-//     initializeGreetings();
-// });
-
-// Or if you're loading content immediately, add this to the end of your script.js:
-document.addEventListener('DOMContentLoaded', () => {
-    // Your existing code to load content...
-    
-    // Then call greetings after a short delay
-    setTimeout(initializeGreetings, 500);
-});
+// The initializeGreetings function is now called from script.js after the home section is loaded

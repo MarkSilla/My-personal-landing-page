@@ -7,14 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Setup navigation after navbar is loaded
       setupNavigation();
-
-      // Setup typing effect after navbar is in DOM
-      const typingTextElement = document.getElementById("typingText");
-      if (typingTextElement) {
-        setTimeout(() => typeWriter(typingTextElement), 1000);
-      } else {
-        console.error("typingText element not found!");
-      }
     })
     .catch((error) => {
       console.error("Error loading navbar:", error);
@@ -31,6 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById(containerId);
         if (container) {
           container.innerHTML = html;
+
+          // After loading home section, setup typing effect and greetings
+          if (containerId === "home-container") {
+            setTimeout(() => {
+              const typingTextElement = document.getElementById("typingText");
+              if (typingTextElement) {
+                typeWriter(typingTextElement);
+              } else {
+                console.error("typingText element not found!");
+              }
+
+              // Initialize greetings after home is loaded
+              initializeGreetings();
+            }, 500);
+          }
         }
       })
       .catch((error) => {
